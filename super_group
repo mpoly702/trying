@@ -15,15 +15,25 @@ if [ $Learner == "y" ]; then
 				echo ' I like u becos you smart'
 	                else 
 				echo 'you are not wise!'
+				./super_group
 			fi	
 		 else
 			echo 'then u dnt know the super group. bye*!'
+		       	./super_group
 		 fi	
 	 else
                 echo 'get out'
+		./super_group
 	 fi		
 else
 	echo 'ok, goodbye and have a nice day?'
+	echo ' ________'
+	echo '|        |'
+	echo '| *    * |'
+	echo '|   **   |'
+	echo '|  /**\  |'
+	echo 'but know that my eyes are on you! see your head!'
+	
 fi 
 		
 		
