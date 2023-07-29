@@ -1,0 +1,33 @@
+#!bin/bash
+#questioning
+echo 'are you an ALX Learner?(y/n)'
+read Learner
+if [ $Learner == "y" ]; then
+   echo 'Do you know the ALX Super group?(y/n)'
+   read Super
+	if [ $Super == 'y' ]; then
+		echo 'Do you know Nyamisa Ongeri?(y/n)'
+		read nyamisa
+		if [ $nyamisa == 'y' ]; then
+			echo 'Is she a good person?(y/n)'
+			read good
+			if [ $good == 'y' ]; then
+				echo ' I like u becos you smart'
+	                else 
+				echo 'you are not wise!'
+			fi	
+		 else
+			echo 'then u dnt know the super group. bye*!'
+		 fi	
+	 else
+                echo 'get out'
+	 fi		
+else
+	echo 'ok, goodbye and have a nice day?'
+fi 
+		
+		
+	
+		 
+
+
