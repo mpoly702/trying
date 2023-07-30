@@ -1,0 +1,9 @@
+#!/bin/bash
+#automating add and commit
+echo 'Enter name of file to add'
+read add
+git add . $add
+echo 'Enter a commit message'
+read commit
+git commit -m $commit
+git push
