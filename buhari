@@ -50,3 +50,56 @@ xx
 you
 younger
 youth
+total 424
+drwxr-xr-x 2 mpolyon mpolyon  4096 Aug 10 14:49 0x00-hello_world
+drwxr-xr-x 2 mpolyon mpolyon  4096 Aug 12 00:24 0x01-variables_if_else_while
+drwxr-xr-x 2 mpolyon mpolyon  4096 Aug 21 21:51 0x04-more_functions_nested_loops
+drwxr-xr-x 2 mpolyon mpolyon  4096 Aug 21 21:50 0x05-pointers_arrays_strings
+-rw-r--r-- 1 mpolyon mpolyon   684 Aug 16 02:28 100-times_table.c
+-rw-r--r-- 1 mpolyon mpolyon   417 Aug 16 02:29 102-fibonacci.c
+-rw-r--r-- 1 mpolyon mpolyon    57 Aug  9 22:04 README
+-rw-r--r-- 1 mpolyon mpolyon  1671 Aug 23 01:33 README.md
+-rw-r--r-- 1 mpolyon mpolyon   107 Sep  1 14:51 bidders
+-rwxr-xr-x 1 mpolyon mpolyon 16872 Aug 22 16:23 bk_calc
+-rw-r--r-- 1 mpolyon mpolyon     0 Aug  9 22:04 bone
+-rw-r--r-- 1 mpolyon mpolyon   650 Aug 22 16:23 books.c
+-rw-r--r-- 1 mpolyon mpolyon   482 Sep  1 18:29 buhari
+-rwxr-xr-x 1 mpolyon mpolyon 16704 Aug 10 18:30 chec.exe
+-rw-r--r-- 1 mpolyon mpolyon   247 Aug 10 18:32 checking.c
+-rwxr-xr-x 1 mpolyon mpolyon 16704 Aug 10 18:33 checky.exe
+drwxr-xr-x 5 mpolyon mpolyon  4096 Aug 23 01:33 examples_pc
+drwxr-xr-x 5 mpolyon mpolyon  4096 Aug 23 01:33 examples_unix
+-rw-r--r-- 1 mpolyon mpolyon   147 Aug 21 21:52 fileme
+-rw-r--r-- 1 mpolyon mpolyon     0 Aug 21 21:52 gcc.c
+-rw-r--r-- 1 mpolyon mpolyon    49 Sep  1 17:11 girl
+-rwxr-xr-x 1 mpolyon mpolyon 16696 Aug 10 23:18 great
+-rw-r--r-- 1 mpolyon mpolyon   248 Aug 10 23:17 great.c
+-rw-r--r-- 1 mpolyon mpolyon   218 Aug 21 21:52 hello.c
+drwxr-xr-x 2 mpolyon mpolyon  4096 Aug 10 10:39 hello_world
+-rwxr-xr-x 1 mpolyon mpolyon   169 Aug  9 22:04 laziness
+-rw-r--r-- 1 mpolyon mpolyon    24 Aug 10 17:50 loopy
+-rw-r--r-- 1 mpolyon mpolyon   286 Aug 10 18:13 loopy.c
+-rwxr-xr-x 1 mpolyon mpolyon 16696 Aug 10 18:14 loopy.exe
+-rwxr-xr-x 1 mpolyon mpolyon    35 Aug  9 22:04 m
+-rw-r--r-- 1 mpolyon mpolyon    90 Aug 21 21:52 news
+-rw-r--r-- 1 mpolyon mpolyon   103 Aug 21 21:52 news.c
+-rwxr-xr-x 1 mpolyon mpolyon 16704 Aug 10 20:31 number
+-rwxr-xr-x 1 mpolyon mpolyon 16704 Aug 10 20:34 numbers
+-rw-r--r-- 1 mpolyon mpolyon   366 Aug 10 21:00 numbers.c
+-rwxr-xr-x 1 mpolyon mpolyon 16704 Aug 10 21:00 numbi
+-rwxr-xr-x 1 mpolyon mpolyon    31 Aug  9 22:04 o
+-rwxr-xr-x 1 mpolyon mpolyon 16704 Aug 10 18:51 ret
+-rwxr-xr-x 1 mpolyon mpolyon 16704 Aug 10 18:44 rev
+-rwxr-xr-x 1 mpolyon mpolyon 16704 Aug 10 18:48 rever
+-rwxr-xr-x 1 mpolyon mpolyon 16704 Aug 10 18:42 reverse
+-rw-r--r-- 1 mpolyon mpolyon   239 Aug 10 18:50 reverse.c
+-rwxr-xr-x 1 mpolyon mpolyon 16704 Aug 10 18:46 reversey
+-rwxr-xr-x 1 mpolyon mpolyon 16704 Aug 10 18:49 revt
+-rwxr-xr-x 1 mpolyon mpolyon   839 Aug  9 22:04 super_group
+-rw-r--r-- 1 mpolyon mpolyon    13 Aug 21 21:52 trial
+drwxr-xr-x 2 mpolyon mpolyon  4096 Aug 21 21:52 trying
+-rw-r--r-- 1 mpolyon mpolyon     1 Aug 10 17:48 while
+-rwxr-xr-x 1 mpolyon mpolyon    23 Aug  9 22:04 xx
+-rw-r--r-- 1 mpolyon mpolyon    11 Aug 10 18:31 you
+-rw-r--r-- 1 mpolyon mpolyon    62 Aug 21 21:52 younger
+-rw-r--r-- 1 mpolyon mpolyon     1 Aug 10 22:52 youth
