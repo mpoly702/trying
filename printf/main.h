@@ -27,5 +27,6 @@ int print_percent(void);
 int print_String(va_list val);
 int _strlen(char *s);
 int _strlenc(const char *s);
+int _putchar(char c);
 
 #endif
