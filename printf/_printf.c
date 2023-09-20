@@ -4,7 +4,7 @@
 
 int _printf(const char *const format, ...) {
     ConvertMatch m[] = {
-        {"%s", print_string}, {"%c", print_Char},
+        {"%s", print_String}, {"%c", print_Char},
         {"%%", print_percent}
     };
 
