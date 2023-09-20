@@ -9,10 +9,10 @@
 int print_String(va_list val) 
 {
     char *s = va_arg(val, char *);
-    int len = (s != NULL) ? strlen(s) : 6; // Default to "(null)" length if s is NULL
+    int len = (s != NULL) ? _strlen(s) : 6; // Default to "(null)" length if s is NULL
 
     for (int i = 0; i < len; i++) {
-        putchar((s != NULL) ? s[i] : "(null)"[i]);
+        _putchar((s != NULL) ? s[i] : "(null)"[i]);
     }
 
     return len;
