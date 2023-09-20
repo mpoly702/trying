@@ -22,6 +22,7 @@ typedef struct format
 	int (*f)();
 } convert_match;
 
+int _printf(const char *const format, ...);
 int print_Char(va_list val);
 int print_percent(void);
 int print_String(va_list val);
