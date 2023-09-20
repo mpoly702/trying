@@ -22,4 +22,6 @@ typedef struct format
 	int (*f)();
 } convert_match;
 
+int print_Char(va_list val);
+
 #endif
