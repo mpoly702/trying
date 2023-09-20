@@ -24,7 +24,7 @@ typedef struct format
 
 int print_Char(va_list val);
 int print_percent(void);
-
+int print_String(va_list val);
 int _strlen(char *s);
 int _strlenc(const char *s);
 
