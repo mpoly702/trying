@@ -6,7 +6,7 @@
  * Return: the length of the string.
  */
 int _printf(const char *const format, ...) {
-    ConvertMatch m[] = {
+    convert_match m[] = {
         {"%s", print_String}, {"%c", print_Char},
         {"%%", print_percent}
     };
