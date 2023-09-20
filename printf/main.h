@@ -23,6 +23,8 @@ typedef struct format
 } convert_match;
 
 int print_Char(va_list val);
+int print_percent(void);
+
 int _strlen(char *s);
 int _strlenc(const char *s);
 
