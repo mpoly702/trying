@@ -17,74 +17,150 @@ int print_integer(va_list args, pmtrs_t *pmtrs)
     
     return add;
 }
-/**comments for function here**/
+/**
+ * print_ch - Print a character with padding
+ * @args: Argument pointer
+ * @pmtrs: Parameters structure
+ *
+ * Return: The number of characters printed
+ */
 int print_ch(va_list args, pmtrs_t *pmtrs)
 {
     char pad_ch = ' ';
     unsigned int padd = 1, add = 0;
     char ch = va_arg(args, int);
-    
+
     if (pmtrs->flg_ms)
-        add += _putchar(ch); // Output the character first
-    
+    {
+        // Output the character first
+        if (pmtrs->width > 1)
+        {
+            add += _putchar(ch);
+            pmtrs->width--;
+        }
+        else
+        {
+            return _putchar(ch);
+        }
+    }
+
     while (padd++ < pmtrs->width)
         add += _putchar(pad_ch); // Output padding characters
-    
+
     if (!pmtrs->flg_ms)
-        add += _putchar(ch); // Output the character last
-    
+    {
+        // Output the character last
+        if (pmtrs->width > 1)
+        {
+            add += _putchar(ch);
+            pmtrs->width--;
+        }
+        else
+        {
+            return _putchar(ch);
+        }
+    }
+
     return add;
 }
-/**comments for function here**/
+
+/**
+ * print_str1 - Print a string with padding
+ * @args: Argument pointer
+ * @pmtrs: Parameters structure
+ *
+ * Return: The number of characters printed
+ */
 int print_str1(va_list args, pmtrs_t *pmtrs)
 {
-    char *str = va_arg(args, char *);
-    char pad_ch = ' ';
+    char *str = va_arg(args, char *), pad_ch = ' ';
     unsigned int padd = 0, add = 0, i = 0, j;
-    (void)pmtrs;
     
     if (!str)
-        str = STR_NIL;
-    
-    j = padd = _strlen(str);
-    if (pmtrs->precision < padd)
-        j = padd = pmtrs->precision;
-    
+        str = "(null)";
+
+    padd = _strlen(str);
+
+    if (pmtrs->precision != UINT_MAX && pmtrs->precision < padd)
+        padd = pmtrs->precision;
+
+    j = padd;
+
     if (pmtrs->flg_ms)
     {
-        for (i = 0; i < padd; i++)
-            add += _putchar(*str++); // Output characters within precision
+        while (i < padd)
+        {
+            add += _putchar(*str++);
+            i++;
+        }
     }
-    
+
     while (j++ < pmtrs->width)
-        add += _putchar(pad_ch); // Output padding characters based on width
-    
+        add += _putchar(pad_ch);
+
     if (!pmtrs->flg_ms)
     {
-        str -= padd;
-        for (i = 0; i < padd; i++)
-            add += _putchar(*str++); // Output characters within precision
+        while (i < padd)
+        {
+            add += _putchar(*str++);
+            i++;
+        }
     }
-    
+
     return add;
 }
+
 /**comment**/
+/**
+ * print_SOS - Print a string with escape sequences for non-printable characters
+ * @args: Argument pointer
+ * @pmtrs: Parameters structure
+ *
+ * Return: The number of characters printed
+ */
 int print_SOS(va_list args, pmtrs_t *pmtrs)
 {
     char *str = va_arg(args, char *);
+    char hexa[3];
     int add = 0;
-    
+
     if (!str)
-        return _puts(STR_NIL); // Handle NULL string
-    
+        return _puts(STR_NIL);
+
     while (*str)
     {
-        if ((*str < 32 && *str >= 0) || *str >= 127)
+        if ((*str > 0 && *str < 32) || *str >= 127)
         {
             add += _putchar('\\');
             add += _putchar('x');
-            char *hexa = transform(*str, 16, 0, pmtrs); // Convert character to hexadecimal
-            
-            if (!hexa)
-                add += _putchar('0');
 
+            hexa[0] = '0';
+            hexa[1] = '0';
+            hexa[2] = '\0';
+
+            transform_hexa(hexa, *str);
+
+            add += _puts(hexa);
+        }
+        else
+        {
+            add += _putchar(*str);
+        }
+
+        str++;
+    }
+
+    return add;
+}
+
+/**
+ * transform_hexa - Transform an integer to a hexadecimal string
+ * @hexa: Hexadecimal string buffer (at least 3 characters)
+ * @value: Value to convert to hexadecimal
+ */
+void transform_hexa(char *hexa, int value)
+{
+    const char *digits = "0123456789ABCDEF";
+    hexa[0] = digits[(value >> 4) & 0xF];
+    hexa[1] = digits[value & 0xF];
+}
