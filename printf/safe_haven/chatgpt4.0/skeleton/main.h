@@ -7,6 +7,12 @@
 #include <limits.h>
 #include <stdlib.h>
 
+#define ERROR_NULL_STRING    -1
+#define ERROR_MISSING_PERIOD -2
+#define ERROR_MISSING_ARG    -3
+#define ERROR_INVALID_PREC   -4
+
+
 #define SIZE_BUF 1024
 #define FREE_BUF -1
 
