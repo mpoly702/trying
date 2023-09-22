@@ -1,6 +1,12 @@
 #include "main.h"
 
-/**comments**/
+
+/**
+ * specifier_get - This finds thefunction of format
+ * @s: string of format
+ *
+ * Return: no of bytes that was  printed
+ */
 
 int (*specifier_get(char *s))(va_list args, pmtrs_t *pmtrs) {
     ind_t indicators[] = {
@@ -31,43 +37,104 @@ int (*specifier_get(char *s))(va_list args, pmtrs_t *pmtrs) {
     }
     return (NULL);
 }
-int flg_get(char *s, pmtrs_t *pmtrs) {
+/**
+ * flg_get - Parse and set flags based on the format string
+ *
+ * This function takes a character pointer pointing to a format specifier and
+ * updates the flags in the parameter structure based on the flags found in
+ * the format specifier.
+ *
+ * @param s: Pointer to the format specifier.
+ * @param pmtrs: Pointer to the parameter structure to update.
+ *
+ * @return: The number of flags set.
+ */
+int flg_get(char *s, pmtrs_t *pmtrs)
+{
     int x = 0;
 
-    switch (*s) {
-        case '+':
-            x = pmtrs->flg_pls = 1;
-            break;
-        case ' ':
-            x = pmtrs->flg_sp = 1;
-            break;
-        case '#':
-            x = pmtrs->flg_htag = 1;
-            break;
-        case '-':
-            x = pmtrs->flg_ms = 1;
-            break;
-        case '0':
-            x = pmtrs->flg_z = 1;
-            break;
+    // Iterate through the format specifier character by character
+    while (*s)
+    {
+        switch (*s)
+        {
+            case '+':
+                pmtrs->flg_pls = 1;
+                x++;
+                break;
+            case ' ':
+                pmtrs->flg_sp = 1;
+                x++;
+                break;
+            case '#':
+                pmtrs->flg_htag = 1;
+                x++;
+                break;
+            case '-':
+                pmtrs->flg_ms = 1;
+                x++;
+                break;
+            case '0':
+                pmtrs->flg_z = 1;
+                x++;
+                break;
+            default:
+                return x; // Return the number of flags set
+        }
+        s++;
     }
-    return (x);
+
+    return x; // Return the number of flags set
 }
+
 /*comment*/
-int modi_get(char *s, pmtrs_t *pmtrs) {
+/**
+ * modi_get - Parse and set modifier flags based on the format string
+ *
+ * This function takes a character pointer pointing to a format specifier and
+ * updates the modifier flags in the parameter structure based on the
+ * modifiers found in the format specifier.
+ *
+ * @param s: Pointer to the format specifier.
+ * @param pmtrs: Pointer to the parameter structure to update.
+ *
+ * @return: 1 if a valid modifier was found and set, 0 otherwise.
+ */
+int modi_get(char *s, pmtrs_t *pmtrs)
+{
     int i = 0;
 
-    switch (*s) {
-        case 'h':
-            i = pmtrs->modi_h = 1;
-            break;
-        case 'l':
-            i = pmtrs->modi_l = 1;
-            break;
+    // Check for 'h' modifier
+    if (*s == 'h')
+    {
+        pmtrs->modi_h = 1;
+        i = 1;
     }
-    return (i);
+    // Check for 'l' modifier
+    else if (*s == 'l')
+    {
+        pmtrs->modi_l = 1;
+        i = 1;
+    }
+
+    return i; // Return 1 if a valid modifier was found and set, 0 otherwise.
 }
-/*comments*/
+
+
+/**
+ * width_get - Parse and set the width from the format string
+ *
+ * This function takes a character pointer pointing to a format specifier and
+ * extracts the width information from it. It can handle both explicit width
+ * values and '*' for dynamic width. The extracted width is stored in the
+ * parameter structure.
+ *
+ * @param s: Pointer to the format specifier.
+ * @param pmtrs: Pointer to the parameter structure to update.
+ * @param args: Variable argument list.
+ *
+ * @return: A new pointer pointing to the character after the width specification.
+ */
 char *width_get(char *s, pmtrs_t *pmtrs, va_list args) {
     int y = 0;
 
@@ -75,10 +142,14 @@ char *width_get(char *s, pmtrs_t *pmtrs, va_list args) {
         y = va_arg(args, int);
         s++;
     } else {
-        while (_Adigit(*s))
-            y = y * 10 + (*s++ - '0');
+        while (*s >= '0' && *s <= '9') {
+            y = y * 10 + (*s - '0');
+            s++;
+        }
     }
+
     pmtrs->width = y;
-    return (s);
+    return s; // Return a new pointer pointing to the character after the width specification.
 }
+
 
