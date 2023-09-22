@@ -1,5 +1,15 @@
 #include "main.h"
 
+/**
+ * print_w - prints a range of char addresses
+ * @begin: starting address
+ * @end: end address
+ * @except: exclude address
+ *
+ *
+ * Return: bytes to be displayed
+ */
+
 int print_w(char *begin, char *end, char *except)
 {
     int add = 0;
@@ -17,7 +27,13 @@ int print_w(char *begin, char *end, char *except)
     return add;
 }
 
-/**comments here for next function**/
+/**
+ * rev_str - prints strings in  reverse
+ * @args: variable list argument
+ * @pmtrs: a parameter
+ * 
+ * Return: no of  bytes printed
+ */
 
 int rev_str(va_list args, pmtrs_t *pmtrs)
 {
@@ -44,7 +60,12 @@ int rev_str(va_list args, pmtrs_t *pmtrs)
     return add;
 }
 
-/**comments here for next function**/
+/**
+ * print_root - This prints rot13 string
+ * @args: an argument
+ * @pmtrs: a parameter
+ * Return: return just bytes
+ */
 
 int print_root(va_list args, pmtrs_t *pmtrs)
 {
