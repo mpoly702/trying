@@ -8,7 +8,7 @@
  *
  * Return: Pointer to the new position in the format string
  */
-char *extract_precision(const char *format, pmtrs_t *pmtrs, va_list args)
+char *prec_get(const char *format, pmtrs_t *pmtrs, va_list args)
 {
     int precision = 0;
     const char *p = format;
