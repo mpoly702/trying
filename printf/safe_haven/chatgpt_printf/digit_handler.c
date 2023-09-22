@@ -1,4 +1,14 @@
 #include "main.h"
+
+/**
+ * init_pmtrs - makes our life easier by resetting the buf
+ * @pmtrs: parameter struct
+ * @args: pointer to the argument
+ *
+ *
+ * Return: void
+ */
+
 void init_pmtrs(pmtrs_t *pmtrs)
 {
     pmtrs->usg = 0;
@@ -8,7 +18,7 @@ void init_pmtrs(pmtrs_t *pmtrs)
     pmtrs->flg_z = 0;
     pmtrs->flg_ms = 0;
     pmtrs->width = 0;
-    pmtrs->precision = 4294967295U; // Equivalent to UINT_MAX
+    pmtrs->precision = 4294967295U; /*Equivalent to UINT_MAX*/
     pmtrs->modi_h = 0;
     pmtrs->modi_l = 0;
 }
@@ -16,7 +26,7 @@ void init_pmtrs(pmtrs_t *pmtrs)
 /**
  * print_per - Print a '%' character
  * @args: Argument pointer
- * @pmtrs: Parameters structure
+ * @pmtrs: Parameter
  *
  * Return: The number of characters printed (always 1)
  */
