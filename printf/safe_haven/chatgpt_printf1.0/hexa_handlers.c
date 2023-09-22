@@ -168,9 +168,13 @@ int HEXA_print(va_list args, pmtrs_t *pmtrs)
         li = (unsigned int)va_arg(args, unsigned int);
 
     /*Convert the integer to uppercase hexadecimal manually*/
-    unsigned long x = li;
-    char *hex_digits = "0123456789ABCDEF";
-    int digit_count = 0;
+    unsigned long x;
+    char *hex_digits;
+    unsigned int digit_count;
+
+    x = li;
+    *hex_digits = "0123456789ABCDEF";
+    digit_count = 0;
     
     do
     {
@@ -194,14 +198,17 @@ int HEXA_print(va_list args, pmtrs_t *pmtrs)
     }
 
     /*Add padding characters for width*/
-    char pad_ch = (pmtrs->flg_z && !pmtrs->flg_ms) ? '0' : ' ';
+    char pad_ch;
+    int i;
+
+    pad_ch = (pmtrs->flg_z && !pmtrs->flg_ms) ? '0' : ' ';
     while (digit_count < pmtrs->width)
     {
         buffer[digit_count++] = pad_ch;
     }
     
     /*Reverse the buffer and print the characters*/
-    for (int i = digit_count - 1; i >= 0; i--)
+    for (i = digit_count - 1; i >= 0; i--)
     {
         ci += _putchar(buffer[i]);
     }
@@ -222,7 +229,6 @@ int hexa_print(va_list args, pmtrs_t *pmtrs)
     unsigned long li;
     int ci = 0;
     char buffer[32]; /*Assuming a maximum of 32 characters for the hexadecimal representation*/
-    char *str = buffer;
     
     if (pmtrs->modi_l)
         li = (unsigned long)va_arg(args, unsigned long);
@@ -232,9 +238,13 @@ int hexa_print(va_list args, pmtrs_t *pmtrs)
         li = (unsigned int)va_arg(args, unsigned int);
 
     /*Convert the integer to hexadecimal manually*/
-    unsigned long x = li;
-    char *hex_digits = "0123456789abcdef";
-    int digit_count = 0;
+    unsigned long x;
+    char *hex_digits;
+    unsigned int digit_count;
+
+    x = li;
+    *hex_digits = "0123456789abcdef";
+    digit_count = 0;
     
     do
     {
@@ -258,14 +268,17 @@ int hexa_print(va_list args, pmtrs_t *pmtrs)
     }
 
     /*Add padding characters for width*/
-    char pad_ch = (pmtrs->flg_z && !pmtrs->flg_ms) ? '0' : ' ';
+    char pad_ch;
+    int i;
+
+    pad_ch = (pmtrs->flg_z && !pmtrs->flg_ms) ? '0' : ' ';
     while (digit_count < pmtrs->width)
     {
         buffer[digit_count++] = pad_ch;
     }
     
     /*Reverse the buffer and print the characters*/
-    for (int i = digit_count - 1; i >= 0; i--)
+    for (i = digit_count - 1; i >= 0; i--)
     {
         ci += _putchar(buffer[i]);
     }
