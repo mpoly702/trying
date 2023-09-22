@@ -9,14 +9,14 @@
 int _strlen(const char *s) {
     int length = 0;
     
-    // Iterate through the string until the null terminator is encountered
+    /*Iterate through the string until the null terminator is encountered*/
     while (s[length] != '\0') {
         length++;
     }
     
     return length;
 }
-/*comments*/
+
 /**
  * print_shift - Print a string with custom formatting and alignment
  * @str: The string to print
@@ -32,7 +32,7 @@ int print_shift(char *str, pmtrs_t *pmtrs)
     unsigned int i = 0;
     char pad_ch = ' ';
     
-    // Calculate the length of the string
+    /*Calculate the length of the string*/
     while (str[i])
         i++;
 
@@ -80,7 +80,7 @@ int print_shift(char *str, pmtrs_t *pmtrs)
         x += _putchar(' ');
     }
 
-    // Print the string character by character
+    /*Print the string character by character*/
     while (*str) {
         x += _putchar(*str);
         str++;
@@ -88,7 +88,7 @@ int print_shift(char *str, pmtrs_t *pmtrs)
 
     return x;
 }
-/*comment*/
+
 /**
  * print_num - Print a number with custom formatting and alignment
  * @str: The number as a string
@@ -101,7 +101,7 @@ int print_num(char *str, pmtrs_t *pmtrs)
     unsigned int i = 0;
     int gen = 0;
 
-    // Calculate the length of the string
+    /*Calculate the length of the string*/
     while (str[i])
         i++;
 
@@ -132,6 +132,7 @@ int print_num(char *str, pmtrs_t *pmtrs)
         return print_left(str, pmtrs);
     }
 }
+
 /**
  * print_left - Print a string with left alignment and custom padding
  * @str: The string to print
@@ -144,7 +145,7 @@ int print_left(char *str, pmtrs_t *pmtrs)
     unsigned int x = 0, gen, gen2, i = 0;
     char pad_ch = ' ';
 
-    // Calculate the length of the string
+    /*Calculate the length of the string*/
     while (str[i])
         i++;
 
@@ -170,6 +171,7 @@ int print_left(char *str, pmtrs_t *pmtrs)
 
     return x;
 }
+
 /**
  * _Adigit - Check if a character is a digit
  * @c: The character to check
@@ -180,8 +182,3 @@ int _Adigit(int c)
 {
     return (c >= '0' && c <= '9');
 }
-
-
-
-
-
