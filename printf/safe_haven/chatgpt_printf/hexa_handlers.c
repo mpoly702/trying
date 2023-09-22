@@ -1,13 +1,19 @@
 #include "main.h"
-
+/**
+* print_octal - This prints unsigned octal no
+* @args: Argument
+* @pmtrs: parameters
+*
+* Return:This is  bytes printed
+*/
 int octal_out(va_list args, pmtrs_t *pmtrs)
 {
     unsigned long li;
-    char buffer[12]; // Assuming a maximum of 11 characters for octal representation + '\0'
+    char buffer[12]; /*Assuming a maximum of 11 characters for octal representation + '\0'*/
     char *str = buffer;
     int ci = 0;
 
-    // Retrieve the argument and convert it to octal manually
+    /*Retrieve the argument and convert it to octal manually*/
     if (pmtrs->modi_l)
         li = (unsigned long)va_arg(args, unsigned long);
     else if (pmtrs->modi_h)
@@ -15,13 +21,13 @@ int octal_out(va_list args, pmtrs_t *pmtrs)
     else
         li = (unsigned int)va_arg(args, unsigned int);
 
-    // Handle '0' prefix if '#' flag is set and the number is not zero
+    /*Handle '0' prefix if '#' flag is set and the number is not zero*/
     if (pmtrs->flg_htag && li != 0)
     {
         *str++ = '0';
     }
 
-    // Convert to octal manually
+    /*Convert to octal manually*/
     if (li == 0)
     {
         *str++ = '0';
@@ -37,7 +43,7 @@ int octal_out(va_list args, pmtrs_t *pmtrs)
 
     *str = '\0';
 
-    // Reverse the octal string
+    /*Reverse the octal string*/
     int str_len = _strlen(buffer);
     char *end = buffer + str_len - 1;
     while (buffer < end)
@@ -47,7 +53,7 @@ int octal_out(va_list args, pmtrs_t *pmtrs)
         *end-- = temp;
     }
 
-    // Handle width manually
+    /*Handle width manually*/
     int padding = pmtrs->width - str_len;
     char pad_ch = (pmtrs->flg_z && !pmtrs->flg_ms) ? '0' : ' ';
     while (padding > 0)
@@ -56,7 +62,7 @@ int octal_out(va_list args, pmtrs_t *pmtrs)
         padding--;
     }
 
-    // Print the octal string
+    /*Print the octal string*/
     while (*str != '\0')
     {
         ci += _putchar(*str);
@@ -67,7 +73,13 @@ int octal_out(va_list args, pmtrs_t *pmtrs)
     return ci;
 }
 
-/*comments*/
+/**
+* binary_out - This prints the  unsigned binary no
+* @args: argument
+* @pmtrs: parameter
+*
+* Return: This is the bytes printed
+*/
 int binary_out(va_list args, pmtrs_t *pmtrs)
 {
     unsigned int x = va_arg(args, unsigned int);
@@ -75,7 +87,7 @@ int binary_out(va_list args, pmtrs_t *pmtrs)
     char *str = buffer;
     int ci = 0;
 
-    // Convert the integer to binary manually
+    /*Convert the integer to binary manually*/
     for (int i = 31; i >= 0; i--)
     {
         buffer[i] = (x & 1) ? '1' : '0';
@@ -83,7 +95,7 @@ int binary_out(va_list args, pmtrs_t *pmtrs)
     }
     buffer[32] = '\0';
 
-    // Skip leading zeros if precision is set
+    /*Skip leading zeros if precision is set*/
     if (pmtrs->precision != UINT_MAX)
     {
         while (*str == '0' && *(str + 1) != '\0')
@@ -92,13 +104,13 @@ int binary_out(va_list args, pmtrs_t *pmtrs)
         }
     }
 
-    // Add '0' prefix if the '#' flag is set and the number is not zero
+    /*Add '0' prefix if the '#' flag is set and the number is not zero*/
     if (pmtrs->flg_htag && str[0] != '0')
     {
         ci += _putchar('0');
     }
 
-    // Handle width manually
+    /*Handle width manually*/
     int str_len = _strlen(str);
     char pad_ch = (pmtrs->flg_z && !pmtrs->flg_ms) ? '0' : ' ';
     while (str_len < pmtrs->width)
@@ -107,7 +119,7 @@ int binary_out(va_list args, pmtrs_t *pmtrs)
         str_len++;
     }
 
-    // Print the binary string
+    /*Print the binary string*/
     while (*str != '\0')
     {
         ci += _putchar(*str);
@@ -119,12 +131,19 @@ int binary_out(va_list args, pmtrs_t *pmtrs)
 }
 
 }
-/*comments*/
+
+/**
+* print_HEX - prints the unsigned hex no in uppercase
+* @args: argument pointer
+* @pmtrs: parameters struct
+*
+* Return: This is the bytes printed
+*/
 int HEXA_print(va_list args, pmtrs_t *pmtrs)
 {
     unsigned long li;
     int ci = 0;
-    char buffer[32]; // Assuming a maximum of 32 characters for the hexadecimal representation
+    char buffer[32]; /*Assuming a maximum of 32 characters for the hexadecimal representation*/
     char *str = buffer;
     
     if (pmtrs->modi_l)
@@ -134,7 +153,7 @@ int HEXA_print(va_list args, pmtrs_t *pmtrs)
     else
         li = (unsigned int)va_arg(args, unsigned int);
 
-    // Convert the integer to uppercase hexadecimal manually
+    /*Convert the integer to uppercase hexadecimal manually*/
     unsigned long x = li;
     char *hex_digits = "0123456789ABCDEF";
     int digit_count = 0;
@@ -145,29 +164,29 @@ int HEXA_print(va_list args, pmtrs_t *pmtrs)
         x /= 16;
     } while (x > 0);
     
-    // Add '0X' prefix if the '#' flag is set and the number is not zero
+    /*Add '0X' prefix if the '#' flag is set and the number is not zero*/
     if (pmtrs->flg_htag && li != 0)
     {
         buffer[digit_count++] = 'X';
         buffer[digit_count++] = '0';
     }
     
-    // Handle width and precision manually if needed
+    /*Handle width and precision manually if needed*/
     
-    // Add leading zeros based on precision
+    /*Add leading zeros based on precision*/
     while (digit_count < pmtrs->precision)
     {
         buffer[digit_count++] = '0';
     }
 
-    // Add padding characters for width
+    /*Add padding characters for width*/
     char pad_ch = (pmtrs->flg_z && !pmtrs->flg_ms) ? '0' : ' ';
     while (digit_count < pmtrs->width)
     {
         buffer[digit_count++] = pad_ch;
     }
     
-    // Reverse the buffer and print the characters
+    /*Reverse the buffer and print the characters*/
     for (int i = digit_count - 1; i >= 0; i--)
     {
         ci += _putchar(buffer[i]);
@@ -177,13 +196,18 @@ int HEXA_print(va_list args, pmtrs_t *pmtrs)
     return ci;
 }
 
-
-/**comment*/
+/**
+* print_hex - prints the  unsigned hex in lowercase
+* @args: argument pointer
+* @*pmtrs: parameters struct
+*
+* Return: This is the bytes printed
+*/
 int hexa_print(va_list args, pmtrs_t *pmtrs)
 {
     unsigned long li;
     int ci = 0;
-    char buffer[32]; // Assuming a maximum of 32 characters for the hexadecimal representation
+    char buffer[32]; /*Assuming a maximum of 32 characters for the hexadecimal representation*/
     char *str = buffer;
     
     if (pmtrs->modi_l)
@@ -193,7 +217,7 @@ int hexa_print(va_list args, pmtrs_t *pmtrs)
     else
         li = (unsigned int)va_arg(args, unsigned int);
 
-    // Convert the integer to hexadecimal manually
+    /*Convert the integer to hexadecimal manually*/
     unsigned long x = li;
     char *hex_digits = "0123456789abcdef";
     int digit_count = 0;
@@ -204,29 +228,29 @@ int hexa_print(va_list args, pmtrs_t *pmtrs)
         x /= 16;
     } while (x > 0);
     
-    // Add '0x' prefix if the '#' flag is set and the number is not zero
+    /*Add '0x' prefix if the '#' flag is set and the number is not zero*/
     if (pmtrs->flg_htag && li != 0)
     {
         buffer[digit_count++] = 'x';
         buffer[digit_count++] = '0';
     }
     
-    // Handle width and precision manually if needed
+    /*Handle width and precision manually if needed*/
     
-    // Add leading zeros based on precision
+    /*Add leading zeros based on precision*/
     while (digit_count < pmtrs->precision)
     {
         buffer[digit_count++] = '0';
     }
 
-    // Add padding characters for width
+    /*Add padding characters for width*/
     char pad_ch = (pmtrs->flg_z && !pmtrs->flg_ms) ? '0' : ' ';
     while (digit_count < pmtrs->width)
     {
         buffer[digit_count++] = pad_ch;
     }
     
-    // Reverse the buffer and print the characters
+    /*Reverse the buffer and print the characters*/
     for (int i = digit_count - 1; i >= 0; i--)
     {
         ci += _putchar(buffer[i]);
