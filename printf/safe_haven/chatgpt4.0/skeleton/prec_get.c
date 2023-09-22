@@ -1,4 +1,6 @@
-char *my_prec_get(char *s, pmtrs_t *pmtrs, va_list args)
+#include "main.h"
+
+char *prec_get(char *s, pmtrs_t *pmtrs, va_list args)
 {  
     int y = 0;
     
