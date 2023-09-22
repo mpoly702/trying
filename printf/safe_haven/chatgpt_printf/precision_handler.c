@@ -14,23 +14,29 @@ char *prec_get(const char *format, pmtrs_t *pmtrs, va_list args)
     const char *p = format;
 
     if (*p != '.')
-        return (char *)p; // Precision not specified
+        return (char *)p; /*Precision not specified*/
 
-    p++; // Move past the '.'
+    p++; /*Move past the '.'*/
     
     if (*p == '*') {
-        // Precision is specified by an argument
+        /*Precision is specified by an argument*/
         int arg = va_arg(args, int);
-        if (arg >= 0) {
+        if (arg >= 0) 
+        {
             precision = arg;
-        } else {
-            // Negative precision is treated as no precision
+        }
+        else
+        {
+            /*Negative precision is treated as no precision*/
             precision = UINT_MAX;
         }
-        p++; // Move past the '*'
-    } else {
-        // Precision is specified as a numeric value
-        while (_Adigit(*p)) {
+        p++; /*Move past the '*'*/
+    }
+    else
+    {
+        /*Precision is specified as a numeric value*/
+        while (_Adigit(*p)) 
+        {
             precision = precision * 10 + (*p - '0');
             p++;
         }
