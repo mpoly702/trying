@@ -28,7 +28,6 @@ char *transform(long int num, int base, int flags, pmtrs_t *pmtrs)
 
     return ptr;
 }
-/**comment**/
 
 /**
  * usg_print - Print an unsigned integer with custom formatting
