@@ -44,7 +44,9 @@ int octal_out(va_list args, pmtrs_t *pmtrs)
     *str = '\0';
 
     /*Reverse the octal string*/
-    int str_len = _strlen(buffer);
+    int str_len;
+   
+    str_len = _strlen(buffer);
     char *end = buffer + str_len - 1;
     while (buffer < end)
     {

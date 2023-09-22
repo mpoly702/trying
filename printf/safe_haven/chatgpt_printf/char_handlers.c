@@ -17,7 +17,8 @@ int print_integer(va_list args, pmtrs_t *pmtrs)
     else
         li = (int)va_arg(args, int);
     
-    char *str = transform(li, 10, 0, pmtrs); /*Convert integer to string*/
+    char *str; 
+	 *str  = transform(li, 10, 0, pmtrs); /*Convert integer to string*/
     int add = _puts(str); /*Output the string*/
     free(str); /*Free allocated memory*/
     
@@ -124,7 +125,7 @@ int print_str1(va_list args, pmtrs_t *pmtrs)
  *
  * Return: The number of characters printed
  */
-int print_SOS(va_list args, pmtrs_t *pmtrs)
+int print_SOS(va_list args)
 {
     char *str = va_arg(args, char *);
     char hexa[3];

@@ -35,7 +35,9 @@ int print_per(va_list args, pmtrs_t *pmtrs)
     (void)args;
     (void)pmtrs;
 
-    char percent = '%';
+    char percent; 
+    
+    percent = '%';
     _putchar(percent);
 
     return 1;
