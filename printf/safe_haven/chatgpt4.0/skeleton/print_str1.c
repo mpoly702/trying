@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
 * print_string - print the string
 * @ap: This is the argument pointer

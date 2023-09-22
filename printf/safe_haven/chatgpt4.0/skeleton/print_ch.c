@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
 * print_ch - This prints char
 * @ap: argument pointer

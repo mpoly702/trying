@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
 * get_width - retrieves width from  format string
 * @s: format string

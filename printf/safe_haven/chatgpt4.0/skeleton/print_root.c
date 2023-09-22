@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * print_root - This prints rot13 string
  * @args: an argument

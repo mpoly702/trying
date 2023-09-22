@@ -7,10 +7,10 @@
 #include <limits.h>
 #include <stdlib.h>
 
-#define ERROR_NULL_STRING    -1
-#define ERROR_MISSING_PERIOD -2
-#define ERROR_MISSING_ARG    -3
-#define ERROR_INVALID_PREC   -4
+#define ERROR_NULL_STRING ""
+#define ERROR_MISSING_PERIOD ""
+#define ERROR_MISSING_ARG  ""
+#define ERROR_INVALID_PREC ""
 
 
 #define SIZE_BUF 1024
