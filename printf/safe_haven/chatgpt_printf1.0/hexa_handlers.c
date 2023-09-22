@@ -93,12 +93,13 @@ int octal_out(va_list args, pmtrs_t *pmtrs)
 int binary_out(va_list args, pmtrs_t *pmtrs)
 {
     unsigned int x = va_arg(args, unsigned int);
-    char buffer[33]; // Assuming a maximum of 32-bit binary representation + '\0'
+    char buffer[33]; /*Assuming a maximum of 32-bit binary representation + '\0'*/
     char *str = buffer;
     int ci = 0;
+    int i;
 
     /*Convert the integer to binary manually*/
-    for (int i = 31; i >= 0; i--)
+    for (i = 31; i >= 0; i--)
     {
         buffer[i] = (x & 1) ? '1' : '0';
         x >>= 1;
@@ -121,8 +122,11 @@ int binary_out(va_list args, pmtrs_t *pmtrs)
     }
 
     /*Handle width manually*/
-    int str_len = _strlen(str);
-    char pad_ch = (pmtrs->flg_z && !pmtrs->flg_ms) ? '0' : ' ';
+    unsigned int str_len; 
+    char pad_ch;
+
+    str_len = _strlen(str);
+    pad_ch = (pmtrs->flg_z && !pmtrs->flg_ms) ? '0' : ' ';
     while (str_len < pmtrs->width)
     {
         ci += _putchar(pad_ch);
