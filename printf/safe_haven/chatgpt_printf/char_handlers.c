@@ -1,5 +1,11 @@
 #include "main.h"
-/**comments for the function here**/
+/**
+* print_integer - This  prints  d integer
+* @args: argument
+* @pmtrs: parameter
+*
+* Return: no character printed
+*/
 int print_integer(va_list args, pmtrs_t *pmtrs)
 {
     long li;
@@ -11,9 +17,9 @@ int print_integer(va_list args, pmtrs_t *pmtrs)
     else
         li = (int)va_arg(args, int);
     
-    char *str = transform(li, 10, 0, pmtrs); // Convert integer to string
-    int add = _puts(str); // Output the string
-    free(str); // Free allocated memory
+    char *str = transform(li, 10, 0, pmtrs); /*Convert integer to string*/
+    int add = _puts(str); /*Output the string*/
+    free(str); /*Free allocated memory*/
     
     return add;
 }
@@ -32,7 +38,7 @@ int print_ch(va_list args, pmtrs_t *pmtrs)
 
     if (pmtrs->flg_ms)
     {
-        // Output the character first
+        /*Output the character first*/
         if (pmtrs->width > 1)
         {
             add += _putchar(ch);
@@ -45,11 +51,11 @@ int print_ch(va_list args, pmtrs_t *pmtrs)
     }
 
     while (padd++ < pmtrs->width)
-        add += _putchar(pad_ch); // Output padding characters
+        add += _putchar(pad_ch); /*Output padding characters*/
 
     if (!pmtrs->flg_ms)
     {
-        // Output the character last
+        /*Output the character last*/
         if (pmtrs->width > 1)
         {
             add += _putchar(ch);
