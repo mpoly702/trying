@@ -9,25 +9,25 @@
 */
 int hexa_print(va_list args, pmtrs_t *pmtrs)
 {
-unsigned long li;
-int ci = 0;
-char *str;
-
-if (pmtrs->modi_l)
-li = (unsigned long)va_arg(args, unsigned long);
-else if (pmtrs->modi_h)
-li = (unsigned short int)va_arg(args, unsigned int);
-else
-li = (unsigned int)va_arg(args, unsigned int);
-
-str = transform(l, 16, USG_CONVT | LOWER_CASE, pmtrs);
-if (pmtrs->hashtag_flg && l)
-{
-*--str = 'x';
-*--str = '0';
-}
-params->unsign = 1;
-return (c += print_number(str, params));
+	unsigned long li;
+	int ci = 0;
+	char *str;
+	
+	if (pmtrs->modi_l)
+		li = (unsigned long)va_arg(args, unsigned long);
+	else if (pmtrs->modi_h)
+		li = (unsigned short int)va_arg(args, unsigned int);
+	else
+		li = (unsigned int)va_arg(args, unsigned int);
+	str = transform(li, 16, USG_CONVT | LOWER_CASE, pmtrs);
+	
+	if (pmtrs->flg_htag && li)
+	{
+		*--str = 'x';
+		*--str = '0';
+	}
+	pmtrs->usg = 1;
+	return (ci += print_num(str, pmtrs));
 }
 
 /**
@@ -37,27 +37,26 @@ return (c += print_number(str, params));
 *
 * Return: This is the bytes printed
 */
-int print_HEX(va_list ap, params_t *params)
+int HEXA_print(va_list args, pmtrs_t *pmtrs)
 {
-unsigned long l;
-int c = 0;
-char *str;
+	unsigned long li;
+	int ci = 0;
+	char *str;
 
-if (params->l_modifier)
-l = (unsigned long)va_arg(ap, unsigned long);
-else if (params->h_modifier)
-l = (unsigned short int)va_arg(ap, unsigned int);
-else
-l = (unsigned int)va_arg(ap, unsigned int);
-
-str = convert(l, 16, CONVERT_UNSIGNED, params);
-if (params->hashtag_flag && l)
-{
-*--str = 'X';
-*--str = '0';
-}
-params->unsign = 1;
-return (c += print_number(str, params));
+	if (pmtrs->modi_l)
+		li = (unsigned long)va_arg(args, unsigned long);
+	else if (pmtrs->modi_h)
+		li = (unsigned short int)va_arg(args, unsigned int);
+	else
+		li = (unsigned int)va_arg(args, unsigned int);
+	str = transform(li, 16, USG_CONVT, pmtrs);
+	if (pmtrs->flg_htag && li)
+	{
+		*--str = 'X';
+		*--str = '0';
+	}
+	pmtrs->usg = 1;
+	return (ci += print_num(str, pmtrs));
 }
 /**
 * print_binary - This prints the  unsigned binary no
@@ -66,16 +65,16 @@ return (c += print_number(str, params));
 *
 * Return: This is the bytes printed
 */
-int print_binary(va_list ap, params_t *params)
+int binary_out(va_list args, pmtrs_t *pmtrs)
 {
-unsigned int n = va_arg(ap, unsigned int);
-char *str = convert(n, 2, CONVERT_UNSIGNED, params);
-int c = 0;
-
-if (params->hashtag_flag && n)
-*--str = '0';
-params->unsign = 1;
-return (c += print_number(str, params));
+	unsigned int x = va_arg(args, unsigned int);
+	char *str = transform(x, 2, USG_CONVT, pmtrs);
+	int ci = 0;
+	
+	if (pmtrs->flg_htag && x)
+		*--str = '0';
+	pmtrs->usg = 1;
+	return (ci += print_num(str, pmtrs));
 }
 
 /**
@@ -85,22 +84,22 @@ return (c += print_number(str, params));
 *
 * Return:This is  bytes printed
 */
-int print_octal(va_list ap, params_t *params)
+int octal_out(va_list args, pmtrs_t *pmtrs)
 {
-unsigned long l;
-char *str;
-int c = 0;
-
-if (params->l_modifier)
-l = (unsigned long)va_arg(ap, unsigned long);
-else if (params->h_modifier)
-l = (unsigned short int)va_arg(ap, unsigned int);
-else
-l = (unsigned int)va_arg(ap, unsigned int);
-str = convert(l, 8, CONVERT_UNSIGNED, params);
-
-if (params->hashtag_flag && l)
-*--str = '0';
-params->unsign = 1;
-return (c += print_number(str, params));
+	unsigned long li;
+	char *str;
+	int ci = 0;
+	
+	if (pmtrs->modi_l)
+		li = (unsigned long)va_arg(args, unsigned long);
+	else if (pmtrs->modi_h)
+		li = (unsigned short int)va_arg(args, unsigned int);
+	else
+		li = (unsigned int)va_arg(args, unsigned int);
+	str = transform(li, 8, USG_CONVT, pmtrs);
+	
+	if (pmtrs->flg_htag && li)
+		*--str = '0';
+	pmtrs->usg = 1;
+	return (ci += print_num(str, pmtrs));
 }

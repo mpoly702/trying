@@ -6,9 +6,9 @@
 *
 * Return: 1 if digit,and return 0 if otherwise
 */
-int _idigit(int c)
+int _Adigit(int c)
 {
-return (c >= '0' && c <= '9');
+	return (c >= '0' && c <= '9');
 }
 
 /**
@@ -19,11 +19,11 @@ return (c >= '0' && c <= '9');
 */
 int _strlen(char *s)
 {
-int i = 0;
-
-while (*s++)
-i++;
-return (i);
+	int i = 0;
+	
+	while (*s++)
+		i++;
+	return (i);
 }
 
 /**
@@ -33,28 +33,27 @@ return (i);
 *
 * Return: The character printed
 */
-int print_number(char *str, params_t *params)
+int print_num(char *str, pmtrs_t *pmtrs)
 {
-unsigned int i = _strlen(str);
-int neg = (!params->unsign && *str == '-');
-
-if (!params->precision && *str == '0' && !str[1])
-str = "";
-if (neg)
-{
-str++;
-i--;
-}
-if (params->precision != UINT_MAX)
-while (i++ < params->precision)
-*--str = '0';
-if (neg)
-*--str = '-';
-
-if (!params->minus_flag)
-return (print_number_right_shift(str, params));
-else
-return (print_number_left_shift(str, params));
+	unsigned int i = _strlen(str);
+	int gen = (!pmtrs->usg && *str == '-');
+	
+	if (!pmtrs->precision && *str == '0' && !str[1])
+		str = "";
+	if (gen)
+	{
+		str++;
+		i--;
+	}
+	if (pmtrs->precision != UINT_MAX)
+		while (i++ < pmtrs->precision)
+			*--str = '0';
+	if (gen)
+		*--str = '-';
+	if (!pmtrs->flg_ms)
+		return (print_shift(str, pmtrs));
+	else
+		return (print_left(str, pmtrs));
 }
 
 /**
@@ -64,39 +63,39 @@ return (print_number_left_shift(str, params));
 *
 * Return: xter printed
 */
-int print_number_right_shift(char *str, params_t *params)
+int print_shift(char *str, pmtrs_t *pmtrs)
 {
-unsigned int n = 0, neg, neg2, i = _strlen(str);
-char pad_char = ' ';
-
-if (params->zero_flag && !params->minus_flag)
-pad_char = '0';
-neg = neg2 = (!params->unsign && *str == '-');
-if (neg && i < params->width && pad_char == '0' && !params->minus_flag)
-str++;
-else
-neg = 0;
-if ((params->plus_flag && !neg2) ||
-(!params->plus_flag && params->space_flag && !neg2))
-i++;
-if (neg && pad_char == '0')
-n += _putchar('-');
-if (params->plus_flag && !neg2 && pad_char == '0' && !params->unsign)
-n += _putchar('+');
-else if (!params->plus_flag && params->space_flag && !neg2 &&
-!params->unsign && params->zero_flag)
-n += _putchar(' ');
-while (i++ < params->width)
-n += _putchar(pad_char);
-if (neg && pad_char == ' ')
-n += _putchar('-');
-if (params->plus_flag && !neg2 && pad_char == ' ' && !params->unsign)
-n += _putchar('+');
-else if (!params->plus_flag && params->space_flag && !neg2 &&
-!params->unsign && !params->zero_flag)
-n += _putchar(' ');
-n += _puts(str);
-return (n);
+	unsigned int x = 0, gen, gen2, i = _strlen(str);
+	char pad_ch = ' ';
+	
+	if (pmtrs->flg_z && !pmtrs->flg_ms)
+		pad_ch = '0';
+	gen = gen2 = (!pmtrs->usg && *str == '-');
+	if (gen && i < pmtrs->width && pad_ch == '0' && !pmtrs->flg_ms)
+		str++;
+	else
+		gen = 0;
+	if ((pmtrs->flg_pls && !gen2) ||
+			(!pmtrs->flg_pls && pmtrs->flg_sp && !gen2))
+		i++;
+	if (gen && pad_ch == '0')
+		x += _putchar('-');
+	if (pmtrs->flg_pls && !gen2 && pad_ch == '0' && !pmtrs->usg)
+		x += _putchar('+');
+	else if (!pmtrs->flg_pls && pmtrs->flg_sp && !gen2 &&
+			!pmtrs->usg && pmtrs->flg_z)
+		x += _putchar(' ');
+	while (i++ < pmtrs->width)
+		x += _putchar(pad_ch);
+	if (gen && pad_ch == ' ')
+		x += _putchar('-');
+	if (pmtrs->flg_pls && !gen2 && pad_ch == ' ' && !pmtrs->usg)
+		x += _putchar('+');
+	else if (!pmtrs->flg_pls && pmtrs->flg_sp && !gen2 &&
+			!pmtrs->usg && !pmtrs->flg_z)
+		x += _putchar(' ');
+	x += _puts(str);
+	return (x);
 }
 
 /**
@@ -106,25 +105,24 @@ return (n);
 *
 * Return: printed xter
 */
-int print_number_left_shift(char *str, params_t *params)
+int print_left(char *str, pmtrs_t *pmtrs)
 {
-unsigned int n = 0, neg, neg2, i = _strlen(str);
-char pad_char = ' ';
-
-if (params->zero_flag && !params->minus_flag)
-pad_char = '0';
-neg = neg2 = (!params->unsign && *str == '-');
-if (neg && i < params->width && pad_char == '0' && !params->minus_flag)
-str++;
-else
-neg = 0;
-
-if (params->plus_flag && !neg2 && !params->unsign)
-n += _putchar('+'), i++;
-else if (params->space_flag && !neg2 && !params->unsign)
-n += _putchar(' '), i++;
-n += _puts(str);
-while (i++ < params->width)
-n += _putchar(pad_char);
-return (n);
+	unsigned int x = 0, gen, gen2, i = _strlen(str);
+	char pad_ch = ' ';
+	
+	if (pmtrs->flg_z && !pmtrs->flg_ms)
+		pad_ch = '0';
+	gen = gen2 = (!pmtrs->usg && *str == '-');
+	if (gen && i < pmtrs->width && pad_ch == '0' && !pmtrs->flg_ms)
+		str++;
+	else
+		gen = 0;
+	if (pmtrs->flg_pls && !gen2 && !pmtrs->usg)
+		x += _putchar('+'), i++;
+	else if (pmtrs->flg_sp && !gen2 && !pmtrs->usg)
+		x += _putchar(' '), i++;
+	x += _puts(str);
+	while (i++ < pmtrs->width)
+		x += _putchar(pad_ch);
+	return (x);
 }

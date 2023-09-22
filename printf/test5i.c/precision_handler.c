@@ -7,24 +7,23 @@
 * @ap: Argument pointer
 * Return:the  new pointer
 */
-
-char *prec_get(char *s, params_t *params, va_list args)
+char *prec_get(char *s, pmtrs_t *pmtrs, va_list args)
 {
-int y = 0;
-
-if (*s != '.')
-return (s);
-s++;
-if (*s == '*')
-{
-y = va_arg(args, int);
-s++;
-}
-else
-{
-while (_Adigit(*s))
-y = y * 10 + (*s++ - '0');
-}
-params->precision = y;
-return (s);
+	int y = 0;
+	
+	if (*s != '.')
+		return (s);
+	s++;
+	if (*s == '*')
+	{
+		y = va_arg(args, int);
+		s++;
+	}
+	else
+	{
+		while (_Adigit(*s))
+			y = y * 10 + (*s++ - '0');
+	}
+	pmtrs->precision = y;
+	return (s);
 }

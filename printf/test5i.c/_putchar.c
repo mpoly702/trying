@@ -1,5 +1,5 @@
 #include "main.h"
-
+#define FREE_BUFF -1
 /**
  * _puts - prints the string on a new line
  * @str: this is the string to print
@@ -21,6 +21,7 @@ int _puts(char *str)
  *
  * Return: On success 1 should be returned.
  * -1 is returned when error occurs and error is set appropriately.
+ *
  */
 int _putchar(int c)
 {
