@@ -9,7 +9,7 @@
  *
  * Return: The string representation of the number
  */
-char *transform(long int num, int base, int flags, pmtrs_t *pmtrs)
+char *transform(long int num, int base, int flags)
 {
     static char buffer[50];
     char *arr = (flags & LOWER_CASE) ? "0123456789abcdef" : "0123456789ABCDEF";

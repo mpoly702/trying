@@ -108,14 +108,14 @@ int modi_get(char *s, pmtrs_t *pmtrs)
         pmtrs->modi_h = 1;
         i = 1;
     }
-    // Check for 'l' modifier
+    /*Check for 'l' modifier*/
     else if (*s == 'l')
     {
         pmtrs->modi_l = 1;
         i = 1;
     }
 
-    return i; /*Return 1 if a valid modifier was found and set, 0 otherwise.*/
+    return(i); /*Return 1 if a valid modifier was found and set, 0 otherwise.*/
 }
 
 

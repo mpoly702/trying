@@ -94,7 +94,7 @@ int _printf(const char *format, ...);
 int print_w(char *begin, char *end, char *except);
 int rev_str(va_list args, pmtrs_t *pmtrs);
 int print_root(va_list args, pmtrs_t *pmtrs);
-char *transform(long int x, int y, int flgs, pmtrs_t *pmtrs);
+char *transform(long int x, int y, int flgs);
 int usg_print(va_list args, pmtrs_t *pmtrs);
 int print_locate(va_list args, pmtrs_t *pmtrs);
 void transform_hexa(char *hexa, int value);
