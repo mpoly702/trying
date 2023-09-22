@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include <stdlib.h>
+#include <stddef.h>
 
 #define SIZE_BUF 1024
 #define FREE_BUF -1
