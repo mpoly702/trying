@@ -1,6 +1,5 @@
 #include "main.h"
 
-
 /**
  * specifier_get - This finds thefunction of format
  * @s: string of format
@@ -53,7 +52,7 @@ int flg_get(char *s, pmtrs_t *pmtrs)
 {
     int x = 0;
 
-    // Iterate through the format specifier character by character
+    /*Iterate through the format specifier character by character*/
     while (*s)
     {
         switch (*s)
@@ -79,15 +78,14 @@ int flg_get(char *s, pmtrs_t *pmtrs)
                 x++;
                 break;
             default:
-                return x; // Return the number of flags set
+                return x; /*Return the number of flags set*/
         }
         s++;
     }
 
-    return x; // Return the number of flags set
+    return x; /*Return the number of flags set*/
 }
 
-/*comment*/
 /**
  * modi_get - Parse and set modifier flags based on the format string
  *
@@ -104,7 +102,7 @@ int modi_get(char *s, pmtrs_t *pmtrs)
 {
     int i = 0;
 
-    // Check for 'h' modifier
+    /*Check for 'h' modifier*/
     if (*s == 'h')
     {
         pmtrs->modi_h = 1;
@@ -117,7 +115,7 @@ int modi_get(char *s, pmtrs_t *pmtrs)
         i = 1;
     }
 
-    return i; // Return 1 if a valid modifier was found and set, 0 otherwise.
+    return i; /*Return 1 if a valid modifier was found and set, 0 otherwise.*/
 }
 
 
