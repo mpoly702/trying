@@ -16,7 +16,7 @@ int print_integer(va_list args, pmtrs_t *pmtrs) {
 
 int print_char(va_list args, pmtrs_t *pmtrs) {
     char pad_ch = ' ';
-    unsigned int padd = 1, add = 0, ch = va_arg(args, int);
+    int padd = 1, add = 0, ch = va_arg(args, int);
 
     if (pmtrs->flg_ms)
         add += _putchar(ch);

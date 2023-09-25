@@ -68,4 +68,4 @@ int print_binary(va_list args, pmtrs_t *pmtrs) {
     pmtrs->usg = 1;
     return _puts(str);
 }
-i
+

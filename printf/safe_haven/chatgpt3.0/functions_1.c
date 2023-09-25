@@ -29,6 +29,7 @@ char *transform(long int num, int base, int flags, pmtrs_t *pmtrs) {
     char sign = 0;
     char *ptr;
     unsigned long x = num;
+    void(*pmtrs);
 
     if (!(flags & 0x01) && num < 0) {
         x = -num;
@@ -58,7 +59,7 @@ void init_pmtrs(pmtrs_t *pmtrs, va_list args) {
     pmtrs->flg_z = 0;
     pmtrs->flg_ms = 0;
     pmtrs->width = 0;
-    pmtrs->precision = 4294967295U; // Equivalent to UINT_MAX
+    pmtrs->precision = 4294967295U; /*Equivalent to UINT_MAX*/
     pmtrs->modi_h = 0;
     pmtrs->modi_l = 0;
     (void)args;

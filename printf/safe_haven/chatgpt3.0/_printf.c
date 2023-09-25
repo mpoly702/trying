@@ -5,13 +5,16 @@ int custom_printf(const char *format, ...) {
     va_list args;
     va_start(args, format);
 
-    int printed_chars = 0;
+    int x;
+    const char *s;
     pmtrs_t pmtrs;
+    
+    x = 0;
 
-    for (const char *s = format; *s; s++) {
+    for 
         if (*s != '%') {
             _putchar(*s);
-            printed_chars++;
+            x++;
         } else {
             s++;
 
@@ -28,13 +31,15 @@ int custom_printf(const char *format, ...) {
                 }
             }
 
-            char specifier = *s;
+            char specifier;
+
+	    specifier = *s;
 
             if (specifier)
-                printed_chars += process_specifier(specifier, args, &pmtrs);
+                x += process_specifier(specifier, args, &pmtrs);
         }
     }
 
     va_end(args);
-    return printed_chars;
+    return x;
 }
