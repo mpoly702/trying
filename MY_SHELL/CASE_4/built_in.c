@@ -1,21 +1,5 @@
 #include "shell.h"
 
-
-/*
-  List of builtin commands, followed by their corresponding functions.
- */
-char *builtin_str[] = {
-  "cd",
-  "help",
-  "exit"
-};
-
-int (*builtin_func[]) (char **) = {
-  &lsh_cd,
-  &lsh_help,
-  &lsh_exit
-};
-
 int lsh_num_builtins() {
   return sizeof(builtin_str) / sizeof(char *);
 }
