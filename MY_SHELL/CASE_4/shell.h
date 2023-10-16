@@ -16,13 +16,7 @@ char *builtin_str[] = {
   "exit"
 };
 
- int (*builtin_func[]) (char **) = {
-  &lsh_cd,
-  &lsh_help,
-  &lsh_exit
-};
-
-
+int (*builtin_func[]) (char **);
 int lsh_exit(char **args);
 int lsh_help(char **args);
 int lsh_cd(char **args);
