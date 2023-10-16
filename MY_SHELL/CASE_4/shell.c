@@ -2,9 +2,7 @@
 
 int main(void)
 {
-  // Load config files, if any.
 
-  // Run command loop.
   lsh_loop();
 
   // Perform any shutdown/cleanup.
