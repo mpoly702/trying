@@ -1,6 +1,12 @@
 #ifndef _SHELL_H_
 #define _SHELL_H_
 
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/wait.h>
+
 #define LSH_TOK_BUFSIZE 64
 #define LSH_TOK_DELIM " \t\r\n\a"
 
@@ -9,6 +15,6 @@ int lsh_launch(char **args);
 void lsh_loop(void);
 char *lsh_read_line(void);
 char **lsh_split_line(char *line);
-int main(int argc, char **argv);
+int main(void);
 
 #endif
