@@ -1,3 +1,5 @@
+#include "shell.h"
+
 void lsh_loop(void)
 {
   char *line;
