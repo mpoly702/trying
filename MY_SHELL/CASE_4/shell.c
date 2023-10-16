@@ -1,6 +1,6 @@
 #include "shell.h"
 
-int main(int argc, char **argv)
+int main(void)
 {
   // Load config files, if any.
 
