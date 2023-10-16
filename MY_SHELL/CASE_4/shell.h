@@ -10,6 +10,12 @@
 #define LSH_TOK_BUFSIZE 64
 #define LSH_TOK_DELIM " \t\r\n\a"
 
+char *builtin_str[] = {
+  "cd",
+  "help",
+  "exit"
+};
+
 int lsh_exit(char **args);
 int lsh_help(char **args);
 int lsh_cd(char **args);
