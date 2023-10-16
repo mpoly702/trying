@@ -1,10 +1,19 @@
 #include "shell.h"
 
-int main(int argc, char **argv)
+int main(void)
 {
-  // Load config files, if any.
 
-  // Run command loop.
+char *builtin_str[] = {
+  "cd",
+  "help",
+  "exit"
+};
+  
+  int (*builtin_func[]) (char **) = {
+  &lsh_cd,
+  &lsh_help,
+  &lsh_exit
+};
   lsh_loop();
 
   // Perform any shutdown/cleanup.
