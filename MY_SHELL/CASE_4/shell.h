@@ -4,3 +4,11 @@
 #define LSH_TOK_BUFSIZE 64
 #define LSH_TOK_DELIM " \t\r\n\a"
 
+int lsh_execute(char **args);
+int lsh_launch(char **args);
+void lsh_loop(void);
+char *lsh_read_line(void);
+char **lsh_split_line(char *line);
+int main(int argc, char **argv);
+
+#endif
