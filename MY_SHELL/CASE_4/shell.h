@@ -10,6 +10,12 @@
 #define LSH_TOK_BUFSIZE 64
 #define LSH_TOK_DELIM " \t\r\n\a"
 
+
+struct StringFunctionPair {
+    char *str;
+    void (*func)();
+};
+
 char *builtin_str[] = {
   "cd",
   "help",
