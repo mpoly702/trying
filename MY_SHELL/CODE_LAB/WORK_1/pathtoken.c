@@ -1,0 +1,27 @@
+"shell.h"
+
+char **extracttoken(char *string)
+{
+	int i = 0;
+	char *token = NULL;
+	char **args = NULL;
+
+	args = (char **)malloc(sizeof(char *) * BUF);
+	token = strtok(string, ":");
+
+	if (token == NULL)
+	{
+		perror("error:");
+		free(args);
+		return NULL;
+	}
+
+	while (token != NULL)
+	{
+		args[i] = token;
+		i++;
+		token = strtok(NULL, ":");
+	}
+	args[i] = NULL;
+	return args;
+}
