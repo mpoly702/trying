@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-#define LSH_TOK_BUFSIZE 64
+#define LSH_TOK_BUFSIZE 1024
 #define LSH_TOK_DELIM " \t\r\n\a"
 
 
@@ -16,13 +16,6 @@ struct StringFunctionPair {
     void (*func)();
 };
 
-char *builtin_str[] = {
-  "cd",
-  "help",
-  "exit"
-};
-
-int (*builtin_func[]) (char **);
 int lsh_exit(char **args);
 int lsh_help(char **args);
 int lsh_cd(char **args);
