@@ -1,3 +1,5 @@
+#include "shell.h"
+
 char **extracttoken(char *string)
 {
 	int i = 0;
@@ -18,6 +20,18 @@ char **extracttoken(char *string)
 	{
 		args[i] = token;
 		i++;
+
+		if (i >= BUF) 
+		{
+      			BUFZONE += BUF * 2;
+      			args = realloc(args, BUF * sizeof(char*));
+		}
+      		if (token == NULL)
+		{
+			perror("reallocation failed");
+			free(args);
+			return NULL;
+		}
 		token = strtok(NULL, " ");
 	}
 	args[i] = NULL;
