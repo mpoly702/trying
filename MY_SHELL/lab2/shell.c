@@ -1,59 +1,54 @@
 #include "shell.h"
-
-char **tokenizer(char *string)
-{
-	int i = 0;
-	char *token = NULL;
-	char **args = NULL;
-	ssize_t BUFZONE = 0;
-
-	args = (char **)malloc(sizeof(char *) * BUF);
-	token = strtok(string, " ");
-
-	if (token == NULL)
-	{
-		perror("error:");
-		free(args);
-		return NULL;
-	}
-
-	while (token != NULL)
-	{
-		args[i] = token;
-		i++;
-
-		if (i >= BUF) 
-		{
-      			BUFZONE += BUF * 2;
-      			args = realloc(args, BUF * sizeof(char*));
-		}
-      		if (token == NULL)
-		{
-			perror("reallocation failed");
-			free(args);
-			return NULL;
-		}
-		token = strtok(NULL, " ");
-	}
-	args[i] = NULL;
-	return args;
-}
-
-
-
-int main(void)
+	
+int main(int argc, char **argv[])
 {
 	
 	char *input = NULL;
-	size_t BUFFER = 0;
-	int i = 0;
-	int j;
-	j = 0;
+	char *instance;
+	size_t BUFFER;
 	ssize_t nread;
+	pid_t pid;
+	pid_t wpid;
+	int status;
+	
+	instance = "$";
+	BUFFER = 0;
 
-	printf(">>>");
+while (1)
+{
+
+	write(1, instance, 2);
 	nread = getline(&input, &BUFFER, stdin);
+	if (nread == -1)
+	{
+		if(feof(stdin))
+		{
+			free(input);
+			exit(EXIT_SUCCESS);
+		}
+		else
+		{
+			perror("Reading_Line");
+			free(input);
+			exit(EXIT_FAILURE);
+		}
+	}
+	if (input[nread - 1] == "\n");
+{
+	input[nread - 1] = '\0';
+}
 	char **inputtoken = tokenizer(input);
+	 if (access(inputoken[0], F_OK) == -1)
+	{
+		perror ("command not found");
+	}
+	
+	free(input);
+	free(inputtoken);
+}	
+	return 0;	
+}
+
 
 
 
