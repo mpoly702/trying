@@ -24,6 +24,16 @@ char **extracttoken(char *string)
 		args[i] = token;
 		i++;
 		token = strtok(NULL, ":");
+
+		if (i >= BUF) 
+		{
+      			BUF = BUF + BUF;
+      			args = realloc(args, BUF * sizeof(char*));
+      		if (!token) 
+		{
+        		perror("lsh: allocation error");
+        		return NULL;
+      		}
 	}
 	args[i] = NULL;
 	return args;
