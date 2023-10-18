@@ -7,9 +7,8 @@
 
 int main(void)
 {
-	char *input = "ls -l";
+	char *input = "ls ";
 	char **tokens = NULL;
-	char *token = NULL;
 	char *path = NULL;
 	char *ptok = NULL;
 	char **PATH = NULL;
@@ -24,7 +23,7 @@ int main(void)
 	k = 0;
 
 	tokens = (char **)malloc(sizeof(char *) * BUF);
-
+	char *token = strtok(input, " ");
 	if (tokens == NULL)
 	{
 		perror("error: ");
@@ -32,8 +31,7 @@ int main(void)
 		return 1;
 	}
 
-	token = strtok(input, " ");
-	while (tokens != NULL)
+	while (token != NULL)
 	{
 		tokens[i] = token;
 		i++;
@@ -70,6 +68,5 @@ int main(void)
 
 	free(tokens);
 	free(PATH);
-
 	return (0);
 }
