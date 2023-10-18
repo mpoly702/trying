@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #define BUF 1024
+
 
 char **extracttoken(char *string)
 {
@@ -48,6 +51,7 @@ char **tokenizer(char *string)
 	int i = 0;
 	char *token = NULL;
 	char **args = NULL;
+	ssize_t BUFZONE = 0;
 
 	args = (char **)malloc(sizeof(char *) * BUF);
 	token = strtok(string, " ");
@@ -86,22 +90,32 @@ char **tokenizer(char *string)
 int main(void)
 {
 	char *path = getenv("PATH");
-	int j = 0;
 	char *input = NULL;
 	size_t BUFFER = 0;
+	int i = 0;
+	int j;
+	j = 0;
 	ssize_t nread;
+	int accesscmd;
 	
 	printf(">>>");
 	nread = getline(&input, &BUFFER, stdin);
 	char **inputtoken = tokenizer(input);
 	char **pathtoken = extracttoken(path);
-	
-	for (j = 0; pathtoken[j] != NULL; j++)
-	{
-		strcat(pathtoken[j], inputtoken[0]);
-		printf("%s\n", pathtoken[j]);
-	}
 
+
+
+	for (i = 0; pathtoken[i] != NULL; i++)
+	{
+		strcat(pathtoken[i], "/");
+		strcat(pathtoken[i], inputtoken[0]);
+		printf("%s\n", pathtoken[i]);
+	}
+	
+	pathtoken[i] = NULL;
+	
+
+	free(input);
 	free(inputtoken);
 	free(pathtoken);
 	return (0);
