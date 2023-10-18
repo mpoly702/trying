@@ -6,3 +6,4 @@
 #include <sys/stat.h>
 #define BUF 1024
 
+char **tokenizer(char *string);
