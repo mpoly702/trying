@@ -97,7 +97,9 @@ int main(void)
 	j = 0;
 	ssize_t nread;
 	int accesscmd;
-	char *command_paths = NULL;
+	char **command_paths = NULL;
+	int path_len;
+	int cmd_len;
 	
 	printf(">>>");
 	nread = getline(&input, &BUFFER, stdin);
@@ -108,9 +110,9 @@ int main(void)
 
 	for (i = 0; pathtoken[i] != NULL; i++) 
 	{
-        int path_len = strlen(pathtoken[i]);
-        int cmd_len = strlen(inputtoken[0]);
-        char *command_paths[i] = (char *)malloc(path_len + 1 + cmd_len + 1); /* +2 for '/' and NULL*/
+        path_len = strlen(pathtoken[i]);
+        cmd_len = strlen(inputtoken[0]);
+        char **command_paths[i] = (char **)malloc(path_len + 1 + cmd_len + 1); /* +2 for '/' and NULL*/
 
         if (command_paths[i] == NULL) 
 	{
@@ -118,18 +120,15 @@ int main(void)
             exit(1);
         }
 
-        strcpy(command_paths[i], pathtoken[i]);
-        command_paths[i][path_len] = '/';
-        strcpy(command_paths[i] + path_len + 1, inputtoken[0]);
-        printf("%s\n", command_paths[i]);
-    }
+        	strcpy(command_paths[i], pathtoken[i]);
+        	command_paths[i][path_len] = '/';
+        	strcpy(command_paths[i] + path_len + 1, inputtoken[0]);
+        	printf("%s\n", command_paths[i]);
+	}
 
     command_paths[i] = NULL;
 
-    free(input);
-    free(inputtoken);
-
-    for (int i = 0; pathtoken[i] != NULL; i++) {
+    for (i = 0; pathtoken[i] != NULL; i++) {
         free(command_paths[i]);
     }
 
@@ -138,21 +137,5 @@ int main(void)
     free(input);
     free(inputtoken);
 
-    return 0;
-}
-
-
-
-
-
-
-
-	
-	pathtoken[i] = NULL;
-	
-
-	free(input);
-	free(inputtoken);
-	free(pathtoken);
 	return (0);
 }

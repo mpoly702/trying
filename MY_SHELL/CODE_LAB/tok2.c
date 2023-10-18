@@ -101,11 +101,13 @@ int main(void)
 	nread = getline(&input, &BUFFER, stdin);
 	char **inputtoken = tokenizer(input);
 	char **pathtoken = extracttoken(path);
+	
+	
 
 
-    free(pathtoken);
-    free(input);
-    free(inputtoken);
+    	free(pathtoken);
+    	free(input);
+    	free(inputtoken);
 
     return 0;
 }
