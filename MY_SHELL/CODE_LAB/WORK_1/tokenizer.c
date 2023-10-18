@@ -1,6 +1,6 @@
 #include "shell.h"
 
-char **extracttoken(char *string)
+char **tokenizer(char *string)
 {
 	int i = 0;
 	char *token = NULL;
