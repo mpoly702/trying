@@ -2,13 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 #define BUF 1024
-#define BUFFER 1024
 
 char **extracttoken(char *string)
 {
 	int i = 0;
 	char *token = NULL;
 	char **args = NULL;
+	ssize_t BUFZONE = 0
 
 	args = (char **)malloc(sizeof(char *) * BUF);
 	token = strtok(string, ":");
@@ -28,7 +28,7 @@ char **extracttoken(char *string)
 
 		if (i >= BUF) 
 		{
-      			BUF += BUFFER;
+      			BUFZONE += BUF * 2;
       			args = realloc(args, BUF * sizeof(char*));
       		if (!token) 
 		{
