@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define BUF 1024
+#define BUFFER 1024
 
 char **extracttoken(char *string)
 {
@@ -27,7 +28,7 @@ char **extracttoken(char *string)
 
 		if (i >= BUF) 
 		{
-      			BUF = BUF + BUF;
+      			BUF += BUFFER;
       			args = realloc(args, BUF * sizeof(char*));
       		if (!token) 
 		{
