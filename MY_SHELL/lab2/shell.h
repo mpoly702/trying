@@ -7,3 +7,6 @@
 #define BUF 1024
 
 char **tokenizer(char *string);
+int main(int argc, char **argv[]);
+
+#endif
