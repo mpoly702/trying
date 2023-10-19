@@ -1,8 +1,16 @@
 #include "shell.h"
-	
+
+/**
+ * main - this function implements the workings of the shell
+ * @argc - this parameter counts the arguments entered in the command line
+ * @argv - this parameter is an array of arguments
+ *
+ * Return: 0 for Success. 1 for failure
+ */
+
 int main(int argc, char **argv[])
 {
-	
+
 	char *input = NULL;
 	char *instance;
 	size_t BUFFER;
@@ -10,7 +18,7 @@ int main(int argc, char **argv[])
 	pid_t pid;
 	pid_t wpid;
 	int status;
-	
+
 	instance = "$";
 	BUFFER = 0;
 
@@ -45,10 +53,6 @@ while (1)
 	
 	free(input);
 	free(inputtoken);
-}	
-	return 0;	
 }
-
-
-
-
+	return 0;
+}
