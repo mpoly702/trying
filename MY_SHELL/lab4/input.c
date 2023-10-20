@@ -10,11 +10,11 @@ char *input(void)
 	if (nread == 0)
 	{
 			free(input);
-			exit(EXIT_SUCCESS);
+			return (0);
 	}
 	else if (nread == -1)
 	{
-		perror("Reading_Line");
+		perror("EXIT");
 		free(input);
 		exit(EXIT_FAILURE);
 	}

@@ -9,11 +9,15 @@
 #include <sys/wait.h>
 #include <sys/stat.h>
 
+#define BUF 1024
+
 extern char **environ;
 
 #define BUF 1024
 
 
 char *input(void);
+char **tokenizer(char *string);
+int execute(char **args);
 
 #endif

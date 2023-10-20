@@ -1,3 +1,18 @@
-Everything you need to know to start coding your own shell
-PID & PPID
-A process is an instance of an executing program, that has a unique process ID. This process ID is used by many functions and system calls to interact with and manipulate processes. In order to retrieve the current process’ ID, you can use the system call getpid (man 2 getpid):
+Write a Shell in C
+
+Basic lifetime of a shell
+Let’s look at a shell from the top down. A shell does three main things in its lifetime.
+
+Initialize: In this step, a typical shell would read and execute its configuration files. These change aspects of the shell’s behavior.
+Interpret: Next, the shell reads commands from stdin (which could be interactive, or a file) and executes them.
+Terminate: After its commands are executed, the shell executes any shutdown commands, frees up any memory, and terminates.
+
+Basic loop of a shell
+So we’ve taken care of how the program should start up. Now, for the basic program logic: what does the shell do during its loop? Well, a simple way to handle commands is with three steps:
+
+Read: Read the command from standard input.
+Parse: Separate the command string into a program and arguments.
+Execute: Run the parsed command.
+
+THIS SHELL PROJECT AIMS TO IMPLEMENT THE FUNCTIONALITIES OF A SHELL AS SPECIFIED BY ALX.....
+
