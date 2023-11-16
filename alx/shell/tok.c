@@ -12,17 +12,18 @@ int main(void) {
     char *token = NULL;
     int i = 0;
     int j;
+    unsigned int x;
 
     while (1) {
-        size_t y = write(1, prompt, strlen(prompt));
+        unsigned int y = write(1, prompt, strlen(prompt));
         nread = getline(&input, &size, stdin);
 
         if (nread == -1) {
             perror("getline failed");
             free(input);
-            free(args); // Free 'args' before exiting
+            free(args); /*Free 'args' before exiting*/
             return -1;
-        } else if (nread > 0) { // Changed this condition to check if any input was read
+        } else if (nread > 0) { /*Changed this condition to check if any input was read*/
             args = (char **)malloc(sizeof(char *));
 
             if (args == NULL) {
@@ -55,18 +56,20 @@ int main(void) {
             }
         }
 
-        // At this point, 'args' contains an array of strings
+        /*At this point, 'args' contains an array of strings*/
         for (j = 0; j < i; j++) {
-            size_t x = write(1, args[j], strlen(args[j]));
-        }
+            	x = write(1, args[j], strlen(args[j]));
 
-        // Free the memory allocated for 'args'
+        }
+	printf("Bytes written: %u\n %u\n", x, y);
+
+        /*Free the memory allocated for 'args'*/
         for (j = 0; j < i; j++) {
             free(args[j]);
         }
         free(args);
 
-        // Free the memory allocated for 'input'
+        /*Free the memory allocated for 'input'*/
         free(input);
     }
 

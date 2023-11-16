@@ -6,7 +6,6 @@ int main(void)
 	char *path = NULL;
 	char *pathcpy = NULL;
 	char **ptoken = NULL;
-	char **new_path = NULL;
 	int i = 0;
 	int j = 0;
 	int x = 0;
@@ -24,36 +23,23 @@ int main(void)
 	printf("%d\n", i);
 	for (j = 0; j < i; j++)
 	{
-		if (j == i)
-		{
-			ptoken[j] = NULL;
-		}
 		printf("%s\n", ptoken[j]);
 		
 	}
+	ptoken[j] = NULL;
 
-		new_path = (char **)malloc((i + 1) * sizeof(char *));
-		/*init every element of the array..malloc for each of them*/
-		for (y = 0; y < i; y++)
-		{
-			new_path[y] = (char *)malloc(strlen(ptoken[y]) + 2 + strlen(command) + 1);
-			strcpy(new_path[y], ptoken[y]);
-			strcat(new_path[y], "/");
-			strcat(new_path[y], command);
-		}
-		new_path[y] ='\0';
-
-	for (x = 0; x < i; x++)
+	i = 24;
+	for (y = 0; y < i + 1; y++)
 	{
-		printf("%s\n", new_path[x]);
+		strcat(ptoken[y], "/");
+		strcat(ptoken[y], command);
 	}
 
 	for (x = 0; x < i; x++)
 	{
-		free(new_path[x]);
+		printf("%s\n", ptoken[x]);
 	}
 
-	free(new_path);
 	free(ptoken);
 	free(pathcpy);
 

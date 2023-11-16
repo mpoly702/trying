@@ -14,11 +14,10 @@
  */
 int execute(char **args)
 {
-    /* Function code here */
 
 	pid_t pid;
 	pid_t xpid;
-
+	char *path = NULL;
 	int status;
 
 	if (args[0] == NULL)
@@ -33,8 +32,19 @@ int execute(char **args)
 	else if (pid == 0)
 	{
 		execve(args[0], args, environ);
-		perror("hsh: command not found");
-		return (1);
+		if(execve(args[0], args, environ) == -1)
+		{
+			path = get_path(args[0]);
+			if (path == NULL)
+			{
+				perror("hsh:command not found");
+				free(path);
+				 return (1);
+			}
+			execve(path, args, NULL);
+			perror("hsh: command not found");
+			return (1);
+		}
 	}
 	else
 	{
@@ -46,6 +56,7 @@ int execute(char **args)
 			}
 	}
 
+	free(path);
 	return (1);
 }
 

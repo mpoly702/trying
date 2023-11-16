@@ -30,8 +30,8 @@ char **tokenizer(char *string)
 		if (i >= BUF) 
 		{
       			BUFZONE += BUF * 2;
-      			args = realloc(args, BUF * sizeof(char*));
-		}
+      			args = realloc(args, BUFZONE * sizeof(char*));
+		
 		token = strtok(NULL, " ");
 	}
 	args[i] = NULL;

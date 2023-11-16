@@ -18,7 +18,9 @@ extern char **environ;
 void instance(void);
 char *input(void);
 char **tokenizer(char *string);
+char *get_path(char *command);
 int execute(char **args);
+int exit_sh(char *args);
 
 #endif
 

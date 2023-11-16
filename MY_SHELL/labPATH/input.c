@@ -24,9 +24,9 @@ char *input(void)
 	}
 	else if (nread == -1)
 	{
-		perror("EXIT");
+		perror("exiting shell...");
 		free(input);
-		exit(EXIT_FAILURE);
+		exit(EXIT_SUCCESS);
 	}
 
 	if (input[nread - 1] == '\n')
