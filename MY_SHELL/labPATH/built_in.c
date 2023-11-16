@@ -14,7 +14,7 @@ int exit_sh(char *args)
 		return (1);
 }
 
-void cd_sh(char *args)
+int cd_sh(char *args)
 {
 	size_t pathSize;
 	char *cwd = NULL;
@@ -25,7 +25,23 @@ void cd_sh(char *args)
 	switch (args)
 	{
 		case '..':
+		 if (cwd == NULL)
+		 {
+        		perror("malloc");
+        		return (1);
+		 }
+		if (getcwd(cwd, pathSize) == NULL)
+		{
+        		perror("getcwd");
+        		free(cwd);
+			return (1);
+		}
+		removeLastDirectory(cwd);
+		if (chdir(cwd) == -1);
+		{
+			perror("chdir fail");
+			free(cwd);
+			return (1);
+		}
+		return (0);
 		
-		
-			
-}
