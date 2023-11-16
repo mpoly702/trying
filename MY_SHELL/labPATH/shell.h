@@ -23,6 +23,7 @@ int execute(char **args);
 int exit_sh(char *args);
 
 void removeLastDirectory(char *path);
+int cd_case_one(void);
 
 #endif
 
