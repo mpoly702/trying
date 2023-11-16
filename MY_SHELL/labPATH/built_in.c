@@ -16,7 +16,16 @@ int exit_sh(char *args)
 
 void cd_sh(char *args)
 {
-	switch (args) {
+	size_t pathSize;
+	char *cwd = NULL;
+
+	pathSize = 256;
+	cwd = (char *)malloc(pathSize);
+
+	switch (args)
+	{
 		case '..':
+		
+		
 			
 }
