@@ -26,3 +26,4 @@ void removeLastDirectory(char *path)
         }
     }
 }
+
