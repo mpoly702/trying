@@ -22,5 +22,7 @@ char *get_path(char *command);
 int execute(char **args);
 int exit_sh(char *args);
 
+void removeLastDirectory(char *path);
+
 #endif
 
