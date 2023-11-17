@@ -24,6 +24,7 @@ int exit_sh(char *args);
 
 void removeLastDirectory(char *path);
 int cd_case_one(void);
+int case_cd_two(void);
 
 #endif
 
