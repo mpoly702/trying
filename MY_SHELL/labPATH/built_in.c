@@ -16,32 +16,32 @@ int exit_sh(char *args)
 
 int cd_sh(char *args)
 {
-	size_t pathSize;
-	char *cwd = NULL;
-
-	pathSize = 256;
-	cwd = (char *)malloc(pathSize);
 
 	switch (args)
 	{
 		case '..':
-		 if (cwd == NULL)
-		 {
-        		perror("malloc");
-        		return (1);
-		 }
-		if (getcwd(cwd, pathSize) == NULL)
-		{
-        		perror("getcwd");
-        		free(cwd);
+		 	case_cd_one();
+			break;
+		case '-':
+			case_cd_two();
+			break;
+		default:
 			return (1);
-		}
-		removeLastDirectory(cwd);
-		if (chdir(cwd) == -1);
-		{
-			perror("chdir fail");
-			free(cwd);
-			return (1);
-		}
-		return (0);
-		
+	}
+		return (1);
+}
+
+int env()
+{
+	char **env = NULL;
+	
+    /*Iterate through environ to access environment variables*/
+    for (env = environ; *env != NULL; env++)
+    {
+        /*Use the write function to print each string to standard output*/
+        write(STDOUT_FILENO, *env, strlen(*env));
+        write(STDOUT_FILENO, "\n", 1);
+    }
+
+    return (1);
+}
