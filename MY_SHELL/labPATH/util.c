@@ -55,3 +55,27 @@ int cd_case_one(void)
       free(cwd);   
 		return (0);
 }
+
+int case_cd_two(void)
+{
+	size_t pathSize;
+	char *cwd = NULL;
+
+	pathSize = 256;
+	cwd = (char *)malloc(pathSize);
+
+	if (cwd == NULL)
+		 {
+        		perror("malloc");
+        		return (1);
+		 }
+		if (getcwd(cwd, pathSize) == NULL)
+		{
+        		perror("getcwd");
+        		free(cwd);
+			return (1);
+		}
+		chdir(cwd);
+		free(cwd);
+		return (1);
+}
