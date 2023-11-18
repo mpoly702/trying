@@ -45,3 +45,36 @@ int env()
 
     return (1);
 }
+
+void setenv(const char *name, const char *value)
+{
+	int i;
+	size_t currentLength;
+	size_t newValueLength;
+	size_t newStringLength;
+	
+    /*Iterate through the environ array to find the element with the given name*/
+    for (i = 0; environ[i] != NULL; ++i) 
+    {
+        /*Check if the current element starts with the given name*/
+        if (strncmp(environ[i], name, strlen(name)) == 0)
+	{
+            /*If found, append the new value to the existing string*/
+            currentLength = strlen(environ[i]);
+            newValueLength = strlen(value);
+            environ[i] = realloc(environ[i], currentLength + 1 + newValueLength + 1);
+            strcat(environ[i], "=");
+            strcat(environ[i], value);
+            return; /*Exit the function since the update is done*/
+        }
+    }
+
+    /*If the name is not found, append a new environment variable to the environ array*/
+    newStringLength = strlen(name) + 1 + strlen(value) + 1;
+    environ = realloc(environ, (environSize() + 2) * sizeof(char *)); /*+2 for the new element and NULL terminator*/
+    environ[environSize()] = malloc(newStringLength);
+    strcpy(environ[environSize()], name);
+    strcat(environ[environSize()], "=");
+    strcat(environ[environSize()], value);
+    environ[environSize() + 1] = NULL; /*Null terminator for the updated environ array*/
+}
