@@ -15,6 +15,11 @@ extern char **environ;
 
 #define BUF 1024
 
+typedef struct {
+    const char *str;
+    int (*func)(char **args);
+} builtins;
+
 void instance(void);
 char *input(void);
 char **tokenizer(char *string);
