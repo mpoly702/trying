@@ -1,4 +1,4 @@
-void deleteEnvironment(const char *name)
+void unsetenv(const char *name)
 {
     int i;
     int j;
