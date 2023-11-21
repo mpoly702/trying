@@ -50,7 +50,7 @@ int env(char **environ)
     return (1);
 }
 
-void setenv(char **args)
+int setenv(char **args)
 {
 	int i;
 	size_t currentLength;
@@ -69,7 +69,7 @@ void setenv(char **args)
             environ[i] = realloc(environ[i], currentLength + 1 + newValueLength + 1);
             strcat(environ[i], "=");
             strcat(environ[i], args[2]);
-            return; /*Exit the function since the update is done*/
+            return (1); /*Exit the function since the update is done*/
         }
     }
 
@@ -83,4 +83,5 @@ void setenv(char **args)
     strcat(environ[environSize()], args[2]);
 	/*Null terminator for the updated environ array*/
     environ[environSize() + 1] = NULL;
+return (1);
 }
