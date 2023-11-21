@@ -1,4 +1,4 @@
-void unsetenv(const char *name)
+void unsetenv(char **args)
 {
     int i;
     int j;
@@ -7,7 +7,7 @@ void unsetenv(const char *name)
     for (i = 0; environ[i] != NULL; ++i) 
     {
         /*Check if the current element starts with the given name*/
-        if (strncmp(environ[i], name, strlen(name)) == 0)
+        if (strncmp(environ[i], args[1], strlen(args[1])) == 0)
         {
             /*Free the memory occupied by the element*/
             free(environ[i]);
@@ -25,7 +25,7 @@ void unsetenv(const char *name)
     }
 }
 
-/*Helper function to get the size of the environ array
+/*Helper function to get the size of the environ array*/
 int environSize()
 {
     int size;
