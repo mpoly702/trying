@@ -4,6 +4,10 @@ int exit_sh(char **args)
 {
 	int args;
 
+	if (args[1] == NULL)
+	{
+		return (0);
+	}
 	args = atoi(args[1]);
 
 	if (args <= 48)
@@ -31,7 +35,7 @@ int cd_sh(char **args)
 		return (1);
 }
 
-int env(char **env)
+int env(char **environ)
 {
 	char **env = NULL;
 	
