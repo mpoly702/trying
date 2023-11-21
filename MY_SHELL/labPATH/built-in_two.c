@@ -1,4 +1,4 @@
-void unsetenv(char **args)
+int unsetenv(char **args)
 {
     int i;
     int j;
@@ -20,7 +20,7 @@ void unsetenv(char **args)
             
             /*Reduce the size of the environ array*/
             environ = realloc(environ, (environSize() + 1) * sizeof(char *));
-            return; /*Exit the function since the deletion is done*/
+            return (1); /*Exit the function since the deletion is done*/
         }
     }
 }
