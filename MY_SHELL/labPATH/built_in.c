@@ -10,7 +10,7 @@ int exit_sh(char *args)
 	{
 		return (0);
 	}
-	else if (args == 48 || args > 57)
+	else if (args > 48)
 		return (1);
 }
 
@@ -71,10 +71,12 @@ void setenv(const char *name, const char *value)
 
     /*If the name is not found, append a new environment variable to the environ array*/
     newStringLength = strlen(name) + 1 + strlen(value) + 1;
-    environ = realloc(environ, (environSize() + 2) * sizeof(char *)); /*+2 for the new element and NULL terminator*/
+	/*+2 for the new element and NULL terminator*/
+    environ = realloc(environ, (environSize() + 2) * sizeof(char *));
     environ[environSize()] = malloc(newStringLength);
     strcpy(environ[environSize()], name);
     strcat(environ[environSize()], "=");
     strcat(environ[environSize()], value);
-    environ[environSize() + 1] = NULL; /*Null terminator for the updated environ array*/
+	/*Null terminator for the updated environ array*/
+    environ[environSize() + 1] = NULL;
 }
