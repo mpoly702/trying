@@ -1,6 +1,6 @@
 #include "shell.h"
 
-int exit_sh(char *args)
+int exit_sh(char **args)
 {
 	int args;
 
@@ -14,10 +14,10 @@ int exit_sh(char *args)
 		return (1);
 }
 
-int cd_sh(char *args)
+int cd_sh(char **args)
 {
 
-	switch (args)
+	switch (args[1])
 	{
 		case '..':
 		 	case_cd_one();
@@ -31,7 +31,7 @@ int cd_sh(char *args)
 		return (1);
 }
 
-int env()
+int env(char **env)
 {
 	char **env = NULL;
 	
@@ -46,7 +46,7 @@ int env()
     return (1);
 }
 
-void setenv(const char *name, const char *value)
+void setenv(char **args)
 {
 	int i;
 	size_t currentLength;
@@ -57,26 +57,26 @@ void setenv(const char *name, const char *value)
     for (i = 0; environ[i] != NULL; ++i) 
     {
         /*Check if the current element starts with the given name*/
-        if (strncmp(environ[i], name, strlen(name)) == 0)
+        if (strncmp(environ[i], args[1], strlen(args[1])) == 0)
 	{
             /*If found, append the new value to the existing string*/
             currentLength = strlen(environ[i]);
-            newValueLength = strlen(value);
+            newValueLength = strlen(args[2]);
             environ[i] = realloc(environ[i], currentLength + 1 + newValueLength + 1);
             strcat(environ[i], "=");
-            strcat(environ[i], value);
+            strcat(environ[i], args[2]);
             return; /*Exit the function since the update is done*/
         }
     }
 
     /*If the name is not found, append a new environment variable to the environ array*/
-    newStringLength = strlen(name) + 1 + strlen(value) + 1;
+    newStringLength = strlen(args[1]) + 1 + strlen(args[2]) + 1;
 	/*+2 for the new element and NULL terminator*/
     environ = realloc(environ, (environSize() + 2) * sizeof(char *));
     environ[environSize()] = malloc(newStringLength);
-    strcpy(environ[environSize()], name);
+    strcpy(environ[environSize()], args[1]);
     strcat(environ[environSize()], "=");
-    strcat(environ[environSize()], value);
+    strcat(environ[environSize()], args[2]);
 	/*Null terminator for the updated environ array*/
     environ[environSize() + 1] = NULL;
 }
