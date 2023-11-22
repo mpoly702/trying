@@ -13,7 +13,7 @@ int unsetenv(char **args)
             free(environ[i]);
 
             /*Shift the remaining elements to fill the gap*/
-            for (int j = i; environ[j + 1] != NULL; ++j) 
+            for (j = i; environ[j + 1] != NULL; ++j) 
             {
                 environ[j] = environ[j + 1];
             }
@@ -39,6 +39,13 @@ int environSize()
 }
 
 /*builtin function*/
+
+convert_match m[] = {
+		{"cd", printf_string}, {"env", printf_char},
+		{"setenv", printf_37},
+		{"exit", printf_int}, {"unsetenv", printf_dec}
+	};
+
   for (i = 0; i < lsh_num_builtins(); i++)
   {
     if (strcmp(args[0], builtin_str[i]) == 0) {
