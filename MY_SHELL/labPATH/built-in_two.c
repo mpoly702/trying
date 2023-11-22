@@ -40,7 +40,7 @@ int environSize()
 
 /*builtin function*/
 
-convert_match m[] = {
+builtins m[] = {
 		{"cd", printf_string}, {"env", printf_char},
 		{"setenv", printf_37},
 		{"exit", printf_int}, {"unsetenv", printf_dec}
@@ -48,7 +48,7 @@ convert_match m[] = {
 
   for (i = 0; i < lsh_num_builtins(); i++)
   {
-    if (strcmp(args[0], builtin_str[i]) == 0) {
+    if (strcmp(args[0], m[i]) == 0) {
       return (*builtin_func[i])(args);
     }
   }
