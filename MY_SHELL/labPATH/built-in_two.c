@@ -41,9 +41,9 @@ int environSize()
 /*builtin function*/
 
 builtins m[] = {
-		{"cd", printf_string}, {"env", printf_char},
-		{"setenv", printf_37},
-		{"exit", printf_int}, {"unsetenv", printf_dec}
+		{"cd", cd_sh}, {"env", env},
+		{"setenv", setenv},
+		{"exit", exit_sh}, {"unsetenv", unsetenv}
 	};
 
   for (i = 0; i < lsh_num_builtins(); i++)
